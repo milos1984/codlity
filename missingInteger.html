@@ -1,0 +1,70 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+<p> najmanji prirodan broj koji se ne nalazi u nizu :</p>
+<p> a) 1,3,6,4,1,2 b) 1,2,3 c) -1,-3 </p>
+<button onclick="resenje1()"> resenje a)</button>
+<button onclick="resenje2()"> resenje b)</button>
+<button onclick="resenje3()"> resenje c)</button>
+<div id="rezultat"> </div>
+    
+
+    <script>
+       var ispis = document.getElementById("rezultat");
+function resenje1(){
+
+var A=[1, 3, 6, 4, 1, 2 ];
+var duzina= A.length;
+var pomocni=[];
+
+for(var i=1; i<=duzina; i++)    {
+pomocni[i]=0;
+    }
+for (i=0; i<duzina; i++)    {
+if (A[i]>0 && A[i]<=duzina) pomocni[A[i]]=1;
+    }
+for (i=1; i<=duzina; i++)   {
+if (pomocni[i]==0) return ispis.innerHTML = i;
+}
+ispis.innerHTML = duzina+1;
+}
+function resenje2(){
+
+var A=[1, 2, 3, 2, 2, 2, 1];
+var duzina= A.length;
+var pomocni=[];
+
+for(var i=1; i<=duzina; i++)    {
+pomocni[i]=0;
+    }
+for (i=0; i<duzina; i++)    {
+if (A[i]>0 && A[i]<=duzina) pomocni[A[i]]=1;
+    }
+for (i=1; i<=duzina; i++)   {
+if (pomocni[i]==0) return ispis.innerHTML = i;
+}
+ispis.innerHTML = duzina+1;
+}
+function resenje3(){
+
+var A=[-1, -3];
+var duzina= A.length;
+var pomocni=[];
+
+for(var i=1; i<=duzina; i++)    {
+pomocni[i]=0;
+    }
+for (i=0; i<duzina; i++)    {
+if (A[i]>0 && A[i]<=duzina) pomocni[A[i]]=1;
+    }
+for (i=1; i<=duzina; i++)   {
+if (pomocni[i]==0) return ispis.innerHTML = i;
+}
+ispis.innerHTML = duzina+1;
+}
+    </script>
+    
+</body>
+</html>
