@@ -1,0 +1,61 @@
+<html>
+<head></head>
+<body>
+<div style="background-color:red"><p align="center"><font size="6" style="color:blue"> U polje za unos, unesite brojeve </font></p>
+<p align="center"><font size="4" style="color:yellow"> Brojeve unosite koristeci "space" </font></p></div>
+</br>
+</br>
+<div style="background-color:aqua">
+<p> <font size="5" style="color:red"> polje za unos: <input id="unos" ></input> </font></p> 
+ </br></div>
+</br></br>
+
+<button onclick="odgovor()">klikni me za resenje</button> 
+
+</br> </br>
+<div id="resenje"></div>
+
+<script>
+
+function odgovor()    {
+    var podatak=document.getElementById("unos").value;
+    var ispis= document.getElementById("resenje");
+    var niz=podatak.split(" ");
+    var duzina= niz.length;
+    
+    for (var i=0; i < duzina; i++){
+        niz[i]=parseInt(niz[i]);
+        if ( isNaN(niz[i]) )    {
+            ispis.innerHTML= "morate uneti prirodne brojeve!!!";
+            return 1;
+        }
+    }
+        
+    var pomocni=[];
+    for( var j=0; j<=duzina; j++)
+        pomocni[j]=0;
+
+    for( var k=1; k<=duzina; k++)    { 
+        if( (niz[k-1] < 1) || (niz[k-1] > duzina) )    {
+            ispis.innerHTML="uneti niz nije permutacija";
+            return 1;
+        }
+        pomocni[niz[k-1]]= 1;
+    }
+    
+    for ( k=1; k<=duzina; k++)    {
+        if(pomocni[k]==0)    {
+            ispis.innerHTML="uneti niz nije permutacija";
+            return 1;
+        }
+    }
+ 
+ ispis.innerHTML=  "niz: " + niz + " jeste permutacija";
+}
+</script>
+
+
+
+</body>
+
+</html>
