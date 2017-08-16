@@ -1,0 +1,58 @@
+<html>
+<head></head>
+<body>
+<div  style="background-color:yellowgreen">
+    <font size="6"  style="color:red; text-align:right">unesite duzinu reke:</font> 
+    <input id="duzinaReke" type="number"> </input>
+</br></br>
+    <font size="6"  style="color:blueviolet; text-align:left">unesite pozicije pojavljivanja lisca:</font> </br>
+    <input id="pozicijaLisca" size="75" ></input>
+</br></br></br>
+</div>
+<button onclick="prelazakZabe()">klikni za resenje</button>
+<div id="odgovor" style="background-color:aqua" style="text-align:left;border:5px red"> </br></br>cao, kada budes kliknuo ovde ces dobiti odgovor :)</div>
+<script>
+
+function prelazakZabe()    {
+var ispis=document.getElementById("odgovor");
+var brojKoraka=document.getElementById("duzinaReke").value;
+if ( (brojKoraka < 1) || ((brojKoraka - parseInt(brojKoraka))!=0) )    {
+ispis.innerHTML= "</br>" + "</br>" + "duzina reke je pozitivan prirodan broj";
+return -1;
+}
+var nizKoraka=document.getElementById("pozicijaLisca").value;
+var niz=nizKoraka.split(" ");
+var duzinaNiza=niz.length;
+
+for (var i=0; i<duzinaNiza; i++)    {
+niz[i]=parseInt(niz[i]);
+if(isNaN(niz[i]) || (niz[i] < 1))   {
+ispis.innerHTML= "</br>" + "</br>" + "pozicije pojavljivanja lisca u reci su pozitivni brojevi";
+return -1;
+    }
+}
+var pom=[];
+for (i=1;i<=brojKoraka;i++)
+pom[i]= -1;
+
+for (var k=0; k<duzinaNiza; k++) {
+    if ( (niz[k]>0) && (niz[k]<=brojKoraka) )    {
+        if(pom[niz[k]]==-1) pom[niz[k]]=k; 
+      }
+}
+var max=-1;
+for (var j=1; j<=brojKoraka; j++)    {
+    if(pom[j]==-1)    {
+        ispis.innerHTML= "</br>"+"</br>"+" zaba ne moze da predje reku, bolje joj je da sedi tu gde jeste";
+        return -1;
+    }
+    if (pom[j]>max) max=pom[j];
+}
+ispis.innerHTML= "</br>"+"</br>"+" zaba ce preci reku u " + max + "-oj sekundi";
+return 1;
+}
+</script>
+
+</body>
+
+</html>
